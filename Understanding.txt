@@ -1,0 +1,38 @@
+The datastructures I used for this are strings - for writing to a list of docs
+for the second option, lists - for storing the document strings with the list 
+index, dictionaries - for each word in the file having values of doc number
+and sets - for easy handling of when the user needs to find multiple search
+terms in a document, it can just intersect all of them and find that document.
+
+Firstly I made a count dictionary, iterated through every line and added each 
+word to it. Next I done an if statement in the loop that iterates through each
+word to check if the word was <NEW, meaning a new document is reached. Once this
+is entered I increment the doc number and break the current line.
+
+Next I started on the search option part. I took string input and iterated 
+through each word in the search string, then I used each word as an index for my
+count dictionary. When the value from the count dictionary index by the search
+word is added to my search dictionary it becomes a set. I had a lot a trial and
+error with creating a set for each search term so that they could be intersected
+however the only way I found to do this was to make a second dictionary.
+
+Next I checked if the user entered more than one search term, if they did I
+intersect the first two set values and store it to term_intersection key in 
+search dictionary. Doing this before entering the loop means I only need to
+intersect one new set with my old set and store it to that one again inside 
+for loop at line 33.
+
+I then made the second option, to enter a doc number and print it. For this I
+followed the instruction in the assignment notes and made a list of strings
+with each string being a new document. This allowed me to simply use the index
+of the list as the document number from user input. To add the string to the
+list I had no problems and just append the list every time a new line is hit
+and clear the string.
+
+Lastly I made a menu that always runs and did some error exceptions for it. I
+then had to make each of the previous three features into functions. The only 
+issue I had was that I had to open the file again in the doc list function for
+it to work more than once. I call the create dictionary before we enter the 
+menu loop and I pass it to my search option function, for my doc list function
+I just pass user input converted to integer. Finally if the user quits the
+program then the file is closed. 
